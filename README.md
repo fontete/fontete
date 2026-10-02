@@ -35,10 +35,11 @@ Kubernetes operations that keep them running.
 | **FPT eHiring** | Multi-tenant ATS: 30+ services, per-tenant deploys for 9 clients (Shinhan, SHB, Vietbank, HSC, Decathlon…) | NestJS · Angular · NATS · RabbitMQ · MongoDB · PostgreSQL · K8s |
 | **Clinic CRM platform** | 8 NestJS services behind a JWT/RBAC gateway over RabbitMQ; billing, appointments, audit trail, LLM copilot | NestJS · PostgreSQL · MongoDB · React |
 | **POSM Resize Tool** | Licensed desktop app that turns Excel orders into print-ready PDFs; online license server | Python · Flask · pytest |
-| **x-it** | One Go binary with an embedded UI for Claude Code profiles, SSH, Docker and WireGuard | Go · React |
+| **[x-it](https://github.com/fontete/x-it)** (open source) | One Go binary with an embedded UI for Claude Code profiles, SSH, Docker and WireGuard | Go · React |
 
-Most of this work lives in private or company repos. I'm happy to walk through the
-code and design decisions in an interview.
+eHiring, the CRM and the POSM tool are company or client work in private repos;
+I'm happy to walk through their code and design decisions in an interview.
+**x-it is open source**: issues and pull requests are welcome.
 
 #### Stack
 
