@@ -34,12 +34,30 @@ Kubernetes operations that keep them running.
 |---|---|---|
 | **FPT eHiring** | Multi-tenant ATS: 30+ services, per-tenant deploys for 9 clients (Shinhan, SHB, Vietbank, HSC, Decathlon…) | NestJS · Angular · NATS · RabbitMQ · MongoDB · PostgreSQL · K8s |
 | **Clinic CRM platform** | 8 NestJS services behind a JWT/RBAC gateway over RabbitMQ; billing, appointments, audit trail, LLM copilot | NestJS · PostgreSQL · MongoDB · React |
-| **POSM Resize Tool** ([download](https://sprint.fontete.com/download)) | Licensed desktop app that turns Excel orders into print-ready PDFs; online license server | Python · Flask · pytest |
+| **POSM Resize Tool** ([download](https://sprint.fontete.com/download)) | Licensed desktop app for print shops: Excel order in, one print-ready TIFF per shop out; online license server | Python · Flask · pytest |
 | **[x-it](https://github.com/fontete/x-it)** (open source) | One Go binary with an embedded UI for Claude Code profiles, SSH, Docker and WireGuard | Go · React |
 
 eHiring, the CRM and the POSM tool are company or client work in private repos;
 I'm happy to walk through their code and design decisions in an interview.
 **x-it is open source**: issues and pull requests are welcome.
+
+#### Spotlight: POSM Resize Tool
+
+Every POSM campaign, a retail chain sends its print shop one Excel sheet:
+hundreds of shops, each with its own banner size. The app reads the sheet,
+picks the master banner with the closest aspect ratio, resizes it to the exact
+size, adds a shop-name strip, and exports one file per shop with a
+`resize_log.txt` of distortion and warnings.
+
+- **TIFF built for the print floor:** CMYK, 500 ppi, Art Optimized, lossless
+  LZW, 1:10 scale, no embedded ICC so the shop applies its own profile
+- **Also exports** PDF, PDF/X-1a, AI, EPS and SVG; reads `.xlsx`/`.xls` orders
+  and `.ai`/`.svg` templates
+- **Fewer reprints:** sizes and shop names come straight from Excel, and bad
+  rows are reported before anything is printed
+- **Runs without a designer**, and without Illustrator for PDF and SVG output
+
+How it works: [fontete.github.io/#posm](https://fontete.github.io/#posm)
 
 #### Stack
 
